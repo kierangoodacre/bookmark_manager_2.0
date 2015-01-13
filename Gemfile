@@ -1,14 +1,10 @@
 source 'https://rubygems.org'
 
 gem 'sinatra'
-
-	group :development, do
-	  gem 'data_mapper'
-		gem 'dm-postgres-adapter'
-	end
+gem 'data_mapper'
+gem 'dm-postgres-adapter'
 
 	group :test do
   	gem 'rspec'
 	end
 
-end
