@@ -1,3 +1,3 @@
 require './lib/server'
 
-run Test
+run BookmarkManager

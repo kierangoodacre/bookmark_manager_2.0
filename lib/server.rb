@@ -16,10 +16,11 @@ DataMapper.finalize
 DataMapper.auto_upgrade!
 
 
-class Test < Sinatra::Application
+class BookmarkManager < Sinatra::Base
 
 	get '/' do
-		'hello'
+		@links = Link.all
+		erb :index
 	end
 
 end
