@@ -1,5 +1,7 @@
 # This class corresponds to a table in the database
 # We can use it to manipulate the data
+require 'data_mapper'
+
 class Link
 
   # this makes the instances of this class Datamapper resources
