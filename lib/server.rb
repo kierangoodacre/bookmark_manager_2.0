@@ -18,6 +18,7 @@ DataMapper.finalize
 DataMapper.auto_upgrade!
 
 
+
 class BookmarkManager < Sinatra::Base
 
 	get '/' do
@@ -30,6 +31,10 @@ class BookmarkManager < Sinatra::Base
 	  title = params["title"]
 	  Link.create(:url => url, :title => title)
 	  redirect to('/')
+		tags = params["tags"].split("").map do |tag|
+			Tag.first_or_create(:text => tag)
+		end
+		Link.create(:url => url, :title => title, :tags => tags)
 	end
 
 end
