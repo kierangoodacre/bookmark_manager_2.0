@@ -6,8 +6,10 @@ gem 'dm-postgres-adapter'
 gem 'database_cleaner'
 gem 'capybara'
 gem 'cucumber'
+gem 'bcrypt'
 
 	group :test do
+		gem 'launchy'
   	gem 'rspec'
 	end
 
