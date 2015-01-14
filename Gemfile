@@ -7,6 +7,7 @@ gem 'database_cleaner'
 gem 'capybara'
 gem 'cucumber'
 gem 'bcrypt'
+gem 'rack-flash3'
 
 	group :test do
 		gem 'launchy'
