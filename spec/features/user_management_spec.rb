@@ -1,14 +1,8 @@
 require 'spec_helper'
+require 'SessionHelpers'
 
 	feature "User sing up" do 
 
-  	def sign_up(email = "alice@example.com", password = "oranges!", password_confirmation = 'oranges!')
-	    visit '/users/new'
-	    fill_in :email, :with => email
-	    fill_in :password, :with => password
-	    fill_in :password_confirmation, :with => password_confirmation
-	    click_button "Sign up"
-  	end
 
 		scenario "when being a new user visiting the site" do
 	    expect{ sign_up }.to change(User, :count).by(1)
@@ -52,13 +46,23 @@ require 'spec_helper'
 	    expect(page).not_to have_content("Welcome, test@test.com")
 	  end
 
-	  def sign_in(email, password)
-	    visit '/sessions/new'
-	    fill_in 'email', :with => email
-	    fill_in 'password', :with => password
-	    click_button 'Sign in'
+	end
+
+	feature 'User signs out' do
+
+	  before(:each) do
+	    User.create(:email => "test@test.com",
+	                :password => 'test',
+	                :password_confirmation => 'test')
 	  end
 
-
+	  scenario 'while being signed in' do
+	    sign_in('test@test.com', 'test')
+	    click_button "Sign out"
+	    expect(page).to have_content("Good bye!")
+	    expect(page).not_to have_content("Welcome, test@test.com")
+	  end
 
 	end
+
+
